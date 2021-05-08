@@ -1,3 +1,10 @@
+# Node, React 기초
+### 기능
+- 회원가입시 mongoDB에 저장 및 암호화
+- 로그인 후 Auth 인증 완료
+
+`React`,`Node.js`,`MongoDB`
+
 **npm init**
 -> package.json 설치 및 npm 환경 세팅
 
