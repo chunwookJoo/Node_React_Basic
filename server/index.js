@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+
 const { User } = require("./models/User");
 const { auth } = require("./middleware/auth");
 const bodyParser = require("body-parser");
@@ -27,6 +27,10 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get("/", (req, res) => res.send("hello worrrld kkk"));
+
+app.get("/api/hello", (req, res) => {
+  res.send("안녕하십니까");
+});
 
 // ** 회원가입을 위한 route **
 app.post("/api/users/register", (req, res) => {
@@ -88,7 +92,7 @@ app.get("/api/users/auth", auth, (req, res) => {
   res.status(200).json({
     _id: req.user._id,
     isAdmin: req.user.role === 0 ? false : true,
-    isAdmin: true,
+    isAuth: true,
     email: req.user.email,
     name: req.user.name,
     lastname: req.user.lastname,
@@ -105,4 +109,6 @@ app.get("/api/users/logout", auth, (req, res) => {
     });
   });
 });
+
+const port = 5000;
 app.listen(port, () => console.log(port));
